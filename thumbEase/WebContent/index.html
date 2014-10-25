@@ -7,7 +7,7 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet"
-	href="/css/main.css">
+	href="/css/bootstrap-extensions.css">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <script
@@ -44,39 +44,44 @@
 	</div>
 	<div class="container">
 		<div class="row row-centered">
-			<div class="col-xs-12 col-centered col-fixed" data-bind="template: { name: 'person-template', data: $data }"></div>
+			<div class="col-xs-12 col-centered col-fixed" data-bind="template: { name: 'button-group-template', data: $data }"></div>
 		</div>
 	</div>
 	
 	<!-- Templates -->
-	<script type="text/html" id="person-template">
+	<script type="text/html" id="button-group-template">
 		<div class="content" style="text-align: center">
-			<!-- ko if: buttonGroupShape1.show -->
+			<!-- ko if: showButtonGroup -->
 				<table align="center">
 					<tr>
 						<td>
-    						<div>
-								<div data-bind="template: { name: 'other-button-template'}"></div>
-							</div>
+							<div data-bind="template: { name: 'regular-button-template', data: buttonGroup().items()[0] }"></div>
+						</td>
+						<td>
+							<!-- ko if: buttonGroup().hasElementTwo -->
+								<div data-bind="template: { name: 'regular-button-template', data: buttonGroup().items()[1] }"></div>
+							<!-- /ko -->
 						</td>
 					</tr>
-				</table>
-			<!-- /ko -->
-			<!-- ko if: buttonGroupShape2 -->
-    			<table align="center">
 					<tr>
 						<td>
-    						<div>
-								<div data-bind="template: { name: 'other-button-template'}"></div>
-							</div>
+							<!-- ko if: buttonGroup().hasElementThree -->
+								<div data-bind="template: { name: 'regular-button-template', data: buttonGroup().items()[2] }"></div>
+							<!-- /ko -->
+						</td>
+						<td>
+							<div data-bind="template: { name: 'other-button-template'}"></div>
 						</td>
 					</tr>
 				</table>
 			<!-- /ko -->
 		</div>
 	</script>
+	<script type="text/html" id="regular-button-template">
+		<a href="#" class="btn btn-primary btn-xlarge" role="button" data-bind="{click: $root.addQueryDetail, html: label }"></a>
+	</script>
 	<script type="text/html" id="other-button-template">
-		<a href="#" class="btn btn-primary btn-lg" role="button" data-bind="{click: nextButtonGroup}">Other »</a>
+		<a href="#" class="btn btn-primary btn-xlarge" role="button" data-bind="{click: nextButtonGroup}">Other »</a>
 	</script>
 	<!-- End Templates -->
 
