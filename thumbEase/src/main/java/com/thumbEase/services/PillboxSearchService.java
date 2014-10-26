@@ -12,7 +12,7 @@ import com.thumbEase.models.QueryModel;
 public class PillboxSearchService {
 	
 	private static final String CORE_URL = "http://pillbox.nlm.nih.gov/PHP/pillboxAPIService.php?key=UJOFO94EEE&shape=%s&color=%s&ingredient=%s";
-	
+
 	@Autowired
 	RestService restService;
 	
@@ -22,8 +22,21 @@ public class PillboxSearchService {
 	public Map<String, String> cache = new HashMap<String, String>();
 	
 	public PillBoxSearchResult getPills(QueryModel queryModel) {
-		PillColor pillColor = Enum.valueOf(PillColor.class, queryModel.getColor().toUpperCase());
-		String baseUri = String.format(CORE_URL, "", pillColor.getCode(), "");
+		
+		PillColor pillColor = PillColor.fromCode(queryModel.getColor());
+		PillShape pillShape = PillShape.fromCode(queryModel.getShape());
+		
+		String shape = "";
+		if (null != pillShape) {
+			shape = pillShape.getCode();
+		}
+		
+		String color = "";
+		if (null != pillColor) {
+			color = pillColor.getCode();
+		}
+		
+		String baseUri = String.format(CORE_URL, shape, color, "");
 		
 		String xml = null;
 		if (cache.containsKey(baseUri)) {

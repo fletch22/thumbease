@@ -34,6 +34,6 @@
 	width: 325px;
 }
 
-.carousel-item {
-	margin: 0 75px 0 75px;
+.slick-container {
+	padding:0 40px 0 40px;text-align:center
 }

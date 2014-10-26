@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
 import com.thumbEase.models.QueryModel;
 import com.thumbEase.services.PillBoxSearchResult;
 import com.thumbEase.services.PillboxSearchService;
@@ -26,11 +26,13 @@ public class SearchController {
 	Logger logger = LoggerFactory.getLogger(SearchController.class);
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody PillBoxSearchResult search(QueryModel queryModel) {
+	public String search(QueryModel queryModel) {
 		logger.info("Is null: {}", restService == null);
 		
 		PillBoxSearchResult pillBoxSearchResult = pillboxSearchService.getPills(queryModel); 
 		
-		return pillBoxSearchResult;
+		Gson gson = new Gson();
+		
+		return gson.toJson(pillBoxSearchResult);
 	}
 }

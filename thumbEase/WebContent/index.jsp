@@ -7,19 +7,21 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/bootstrap-extensions.css">
-<link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="/slick/slick.css" />
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	
+
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript"
+	src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
 <script src="/js/ko.js"></script>
 <script type="text/javascript" src="/slick/slick.js"></script>
+<script type="text/javascript" src="/js/carousel.js"></script>
 
 </head>
 
@@ -48,19 +50,22 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12" style="padding:0 40px 0 40px">
-				<div id="slick">
+			<div class="col-xs-12 slick-container">
+				<div id="slick" style="max-width: 300px;margin-bottom:10px;">
 					<div class="image-carousel-container">
-						<div class="image-carousel" data-bind="text: image1.label, attr: {id: image1.id}"></div>
-						<img src="" data-bind="attr: {src:''}">
+						<img id="image1"
+							data-bind="attr: { src: image1.uri, altSrc: '/images/300x300_blank.png' }"
+							height="285" width="285">
 					</div>
-				  	<div class="image-carousel-container">
-						<div class="image-carousel" data-bind="text: image2.label, attr: {id: image2.id}"></div>
-						<img src="" data-bind="attr: {src:''}">
+					<div class="image-carousel-container">
+						<img id="image2"
+							data-bind="attr: { src: image2.uri, altSrc: '/images/300x300_blank.png'  }"
+							height="285" width="285">
 					</div>
-				  	<div class="image-carousel-container">
-						<div class="image-carousel" data-bind="text: image3.label, attr: {id: image3.id}"></div>
-						<img src="" data-bind="attr: {src:''}">
+					<div class="image-carousel-container">
+						<img id="image3"
+							data-bind="attr: { src: image3.uri, altSrc: '/images/300x300_blank.png' }"
+							height="285" width="285">
 					</div>
 				</div>
 			</div>
@@ -68,6 +73,14 @@
 		<div class="row row-centered">
 			<div class="col-xs-12 col-centered col-fixed"
 				data-bind="template: { name: 'button-group-template', data: $data }"></div>
+		</div>
+		<div class="row row-centered">
+			<div class="col-xs-12 col-centered col-fixed">
+				<div class="btn-group btn-group-md content-text-centered" style="padding:0 0 0 20px;">
+					<button type="button" class="btn btn-default" style="padding:5px 35px;margin-right:21px" data-bind="click: startOver">Start Over</button>
+					<button type="button" class="btn btn-default" style="padding:5px 53px;" data-bind="click: nextSearchField">Next</button>
+				</div>
+			</div>
 		</div>
 	</div>
 
