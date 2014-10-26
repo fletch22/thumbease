@@ -136,14 +136,27 @@
 		 
 		 pillIdViewModel.addQueryDetail = function(event) {
 			 console.log("Clicked add query detail: ", event);
-			 
 		 }
 		 
 		 pillIdViewModel.showButtonGroup = true;
 		 
+		 pillIdViewModel.image1 = new PillImage("1st Image!");
+		 pillIdViewModel.image2 = new PillImage("2nd Image!");
+		 pillIdViewModel.image3 = new PillImage("3rd Image!");
+		 
 		 return pillIdViewModel;
+	};
+	
+	var PillImage = function(label) {
+		var pillImage = this;
+		
+		pillImage.label = label;
+		
+		return pillImage;
 	};
 
 	ko.applyBindings(new PillIdViewModel());
+	
+	$('#slick').slick({ arrows: true});
  });
 

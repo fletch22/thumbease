@@ -24,3 +24,16 @@
     cursor: pointer;
     cursor: hand;
 }
+
+.content-text-centered {
+	text-align: center;
+}
+
+.image-carousel-container {
+	height: 300px;
+	width: 325px;
+}
+
+.carousel-item {
+	margin: 0 75px 0 75px;
+}

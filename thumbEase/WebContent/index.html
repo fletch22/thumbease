@@ -6,16 +6,20 @@
 
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet"
-	href="/css/bootstrap-extensions.css">
+<link rel="stylesheet" href="/css/bootstrap-extensions.css">
+<link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
 <script src="/js/ko.js"></script>
+<script type="text/javascript" src="/slick/slick.js"></script>
 
 </head>
 
@@ -43,14 +47,30 @@
 		</nav>
 	</div>
 	<div class="container">
+		<div class="row">
+			<div class="col-xs-12" style="padding:0 40px 0 40px">
+				<div id="slick">
+					<div class="image-carousel-container">
+						<div class="image-carousel" data-bind="text: image1.label"></div>
+					</div>
+				  	<div class="image-carousel-container">
+						<div class="image-carousel" data-bind="text: image2.label"></div>
+					</div>
+				  	<div class="image-carousel-container">
+						<div class="image-carousel" data-bind="text: image3.label"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="row row-centered">
-			<div class="col-xs-12 col-centered col-fixed" data-bind="template: { name: 'button-group-template', data: $data }"></div>
+			<div class="col-xs-12 col-centered col-fixed"
+				data-bind="template: { name: 'button-group-template', data: $data }"></div>
 		</div>
 	</div>
-	
+
 	<!-- Templates -->
 	<script type="text/html" id="button-group-template">
-		<div class="content" style="text-align: center">
+		<div class="content content-text-centered">
 			<!-- ko if: showButtonGroup -->
 				<table align="center">
 					<tr>
