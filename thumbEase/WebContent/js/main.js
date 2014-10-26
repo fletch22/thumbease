@@ -140,17 +140,19 @@
 		 
 		 pillIdViewModel.showButtonGroup = true;
 		 
-		 pillIdViewModel.image1 = new PillImage("1st Image!");
-		 pillIdViewModel.image2 = new PillImage("2nd Image!");
-		 pillIdViewModel.image3 = new PillImage("3rd Image!");
+		 pillIdViewModel.image1 = new PillImage("pillImage1");
+		 pillIdViewModel.image2 = new PillImage("pillImage2");
+		 pillIdViewModel.image3 = new PillImage("pillImage3");
 		 
 		 return pillIdViewModel;
 	};
 	
-	var PillImage = function(label) {
+	var PillImage = function(id) {
 		var pillImage = this;
 		
-		pillImage.label = label;
+		pillImage.id = id;
+		pillImage.uri = "";
+		pillImage.isActive = $()
 		
 		return pillImage;
 	};
