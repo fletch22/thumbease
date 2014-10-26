@@ -122,39 +122,65 @@
 		 pillIdViewModel.nextButtonGroup = function() {
 			 var nextGroupIndex = currentButtonGroup + 1;
 			 if (nextGroupIndex == pillIdViewModel.buttonGroupList.length) {
-				 var nextSearchFieldIndex = currentSearchField + 1;
-				 if (nextSearchFieldIndex == searchFieldArray.length) {
-					 nextSearchFieldIndex = 0;
-				 }
-				 currentSearchField = nextSearchFieldIndex;
-				 pillIdViewModel.buttonGroupList = searchFieldArray[currentSearchField];
+				 incrementSearchFieldArray();
+				 setSearchField();
 				 nextGroupIndex = 0;
 			 }
 			 currentButtonGroup = nextGroupIndex;
 			 pillIdViewModel.buttonGroup(pillIdViewModel.buttonGroupList[currentButtonGroup]);
 		 };
 		 
+		 function incrementSearchFieldArray() {
+			 var nextSearchFieldIndex = currentSearchField + 1;
+			 if (nextSearchFieldIndex == searchFieldArray.length) {
+				 nextSearchFieldIndex = 0;
+			 }
+			 currentSearchField = nextSearchFieldIndex;
+		 }
+		 
+		 function setSearchField() {
+			 pillIdViewModel.buttonGroupList = searchFieldArray[currentSearchField];
+		 };
+		 
 		 pillIdViewModel.addQueryDetail = function(event) {
 			 console.log("Clicked add query detail: ", event);
+			 
+			 var queryParameters = {
+					 color: '',
+					 shape: ''
+			 }
+			 
+			 if (event.searchType == "BY_COLOR") {
+				queryParameters.color = "red";
+			 } else if (event.searchType == "BY_SHAPE") {
+				queryParameters.shape = "triangle";
+			 }
+			 
+			 $.ajax({
+			     type: "GET",
+			     url: "/rest/search",
+			     data: queryParameters
+			});
 		 }
 		 
 		 pillIdViewModel.showButtonGroup = true;
 		 
-		 pillIdViewModel.image1 = new PillImage("pillImage1");
-		 pillIdViewModel.image2 = new PillImage("pillImage2");
-		 pillIdViewModel.image3 = new PillImage("pillImage3");
+		 pillIdViewModel.image1 = new PillImageViewModel("pillImage1", "No Results");
+		 pillIdViewModel.image2 = new PillImageViewModel("pillImage2", "No Results");
+		 pillIdViewModel.image3 = new PillImageViewModel("pillImage3", "No Results");
 		 
 		 return pillIdViewModel;
 	};
 	
-	var PillImage = function(id) {
-		var pillImage = this;
+	var PillImageViewModel = function(id, label) {
+		var pillImageViewModel = this;
 		
-		pillImage.id = id;
-		pillImage.uri = "";
-		pillImage.isActive = $()
+		pillImageViewModel.label = label;
+		pillImageViewModel.id = id;
+		pillImageViewModel.uri = "";
+		pillImageViewModel.isActive = $("#" + pillImageViewModel.id).hasClass("active");
 		
-		return pillImage;
+		return pillImageViewModel;
 	};
 
 	ko.applyBindings(new PillIdViewModel());
