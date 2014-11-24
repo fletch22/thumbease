@@ -20,7 +20,7 @@ function clearCarousel() {
 
 function createCarouselImage(imageUri) {
 	var carouselContainer = $("<div class=\"image-carousel-container\"></div>");
-	carouselContainer.append($("<img height=\"285\" width=\"285\" src=\""
+	carouselContainer.append($("<img class=\"slick-image\" height=\"285\" width=\"285\" src=\""
 			+ imageUri + "\">"));
 	$("#slick").slickAdd(carouselContainer);
 }

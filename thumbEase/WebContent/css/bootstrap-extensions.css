@@ -34,6 +34,25 @@
 	width: 325px;
 }
 
+#slick {
+	max-width:300px;
+	margin-bottom:10px;
+	margin:auto
+}
+
+.footer {
+	text-align:center;
+	float: none;
+    margin: 0 auto;
+}
+
 .slick-container {
-	padding:0 40px 0 40px;text-align:center
+	padding:0 40px 0 40px;
+	text-align:center;
+	float: none;
+    margin: 0 auto;
+}
+
+.slick-image {
+	padding-left: 20px;
 }

@@ -26,7 +26,7 @@
 </head>
 
 <body>
-	<div>
+	<div class="container">
 		<nav role="navigation" class="navbar navbar-default">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -51,19 +51,19 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 slick-container">
-				<div id="slick" style="max-width: 300px;margin-bottom:10px;">
+				<div id="slick">
 					<div class="image-carousel-container">
-						<img id="image1"
+						<img id="image1" class="slick-image"
 							data-bind="attr: { src: image1.uri, altSrc: '/images/300x300_blank.png' }"
 							height="285" width="285">
 					</div>
 					<div class="image-carousel-container">
-						<img id="image2"
+						<img id="image2" class="slick-image"
 							data-bind="attr: { src: image2.uri, altSrc: '/images/300x300_blank.png'  }"
 							height="285" width="285">
 					</div>
 					<div class="image-carousel-container">
-						<img id="image3"
+						<img id="image3" class="slick-image"
 							data-bind="attr: { src: image3.uri, altSrc: '/images/300x300_blank.png' }"
 							height="285" width="285">
 					</div>
@@ -74,9 +74,9 @@
 			<div class="col-xs-12 col-centered col-fixed"
 				data-bind="template: { name: 'button-group-template', data: $data }"></div>
 		</div>
-		<div class="row row-centered">
-			<div class="col-xs-12 col-centered col-fixed">
-				<div class="btn-group btn-group-md content-text-centered" style="padding:0 0 0 20px;">
+		<div class="row footer">
+			<div class="col-xs-12">
+				<div class="btn-group btn-group-md content-text-centered">
 					<button type="button" class="btn btn-default" style="padding:5px 35px;margin-right:21px" data-bind="click: startOver">Start Over</button>
 					<button type="button" class="btn btn-default" style="padding:5px 53px;" data-bind="click: nextSearchField">Next</button>
 				</div>
